@@ -26,21 +26,20 @@ begin
 
   inputedText := 'giggabaj';
 
- result :=  pCountSimilar(firstValue, secondValue, _start, _end, inputedText)
+  result := pCountSimilar(firstValue, secondValue, _start, _end, inputedText)
 
 end;
 
 Function CallMe(): Boolean;
-var value : Integer;
+var
+  value: integer;
 begin
 
 
-//  writeln(compute(1, 1) = 8);
-//  writeln(compute(1, 2) = 6);
-//  writeln(compute(1, 3) = 2);
-//  writeln(compute(2, 4) = 1);
-
-
+  // writeln(compute(1, 1) = 8);
+  // writeln(compute(1, 2) = 6);
+  // writeln(compute(1, 3) = 2);
+  // writeln(compute(2, 4) = 1);
 
 end;
 
@@ -48,9 +47,9 @@ Function fIs_Similar(firstString, secondString: String): Boolean;
 var
   firstStringArray, secondStringArray: Array of String;
   i: integer;
-  Value: Boolean;
+  value: Boolean;
 begin
-  Value := true;
+  value := true;
   SetLength(firstStringArray, Length(firstString));
   SetLength(secondStringArray, Length(firstString));
 
@@ -64,7 +63,7 @@ begin
 
         if MatchStr(secondString[i], firstStringArray) then
         begin
-          Value := False;
+          value := False;
           break
         end;
 
@@ -75,11 +74,11 @@ begin
     firstStringArray[i - 1] := secondString[i];
 
     if not(firstStringArray[i - 1] = secondString[i]) then
-      Value := False;
+      value := False;
 
   end;
 
-  Result := Value;
+  result := value;
 
 end;
 
@@ -111,20 +110,19 @@ begin
     answer := Length(inputedText);
   end
   else
-  for j := 0 to (Length(inputedText) - _end + _start) - 1 do
-  begin
-    secondString := Copy(inputedText, _start + j, _end);
-
-    writeln(Format('string_check : %s, secondString : %s',
-      [string_check, secondString]));
-
-
-    if (fIs_Similar(string_check, secondString)) then
+    for j := 0 to (Length(inputedText) - _end + _start) - 1 do
     begin
-      writeln(Format('base: %s, subs: %s', [string_check, secondString]));
-      answer := answer + 1;
+      secondString := Copy(inputedText, _start + j, _end);
+
+      writeln(Format('string_check : %s, secondString : %s',
+        [string_check, secondString]));
+
+      if (fIs_Similar(string_check, secondString)) then
+      begin
+        writeln(Format('base: %s, subs: %s', [string_check, secondString]));
+        answer := answer + 1;
+      end;
     end;
-  end;
   // end;
 
   writeln(answer);
@@ -137,16 +135,16 @@ var
   _end: integer;
   base, subStr: String;
   substrings, similars: TStringList;
-   wtf : Boolean;
+  wtf: Boolean;
 begin
   substrings := TStringList.Create;
-  similars   := TStringList.Create;
+  similars := TStringList.Create;
 
   substringLen := (ri + 1) - li;
 
   if (substringLen = 1) then
   begin
-    Result := n;
+    result := n;
     exit;
   end;
 
@@ -155,12 +153,12 @@ begin
   base := Copy(S, li, substringLen);
   writeln(Format('substring base: %s', [base]));
 
-  for i := 1 to n+1 do
+  for i := 1 to n + 1 do
   begin
 
     _end := i + substringLen;
 
-    if (_end > n+1) then
+    if (_end > n + 1) then
       continue;
 
     substrings.Add(Copy(S, i, substringLen));
@@ -172,18 +170,18 @@ begin
 
   for i := 0 to substrings.Count - 1 do
   begin
-     subStr := substrings[i];
+    subStr := substrings[i];
     if (fSimilar(base, subStr, q)) then
     begin
       similars.Add(subStr);
     end;
   end;
 
- //  if similars.Count > 0 then
- //  for i := 0 to similars.Count -1 do
- //  Writeln(similars[i]);
+  // if similars.Count > 0 then
+  // for i := 0 to similars.Count -1 do
+  // Writeln(similars[i]);
 
-   Result := similars.Count
+  result := similars.Count
 end;
 
 Function fSimilar(firstString: String; subs: String; q: integer): Boolean;
@@ -219,7 +217,7 @@ begin
 
     end;
 
-   Result := (totalNotEqual + totalEqual = total) and (totalEqual < 2);
+  result := (totalNotEqual + totalEqual = total) and (totalEqual < 2);
 end;
 
 end.

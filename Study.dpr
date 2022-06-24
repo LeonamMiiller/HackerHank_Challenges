@@ -7,15 +7,23 @@ program Study;
 uses
   System.SysUtils,
   similar_strings in 'similar-strings\similar_strings.pas',
-  exceptional_server in 'exceptional_server\exceptional_server.pas';
+  exceptional_server in 'exceptional_server\exceptional_server.pas',
+  priority_queue in 'priority_queue\priority_queue.pas';
 
 begin
   try
 
 
-      CallMe();
+     // CallMe();
+
+   //  with TExcept.Create do
+   //  Execute;
 
 
+      with TPriorityQueue.Create do
+      Execute;
+
+     Read;
 
   except
     on E: Exception do

@@ -91,6 +91,7 @@
         </DelphiCompile>
         <DCCReference Include="similar-strings\similar_strings.pas"/>
         <DCCReference Include="exceptional_server\exceptional_server.pas"/>
+        <DCCReference Include="priority_queue\priority_queue.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -129,6 +130,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Study.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Study.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Release\Study.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Study.exe</RemoteName>
                         <Overwrite>true</Overwrite>
