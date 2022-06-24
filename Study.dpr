@@ -6,14 +6,16 @@ program Study;
 
 uses
   System.SysUtils,
-  similar_strings in 'similar-strings\similar_strings.pas';
+  similar_strings in 'similar-strings\similar_strings.pas',
+  exceptional_server in 'exceptional_server\exceptional_server.pas';
 
 begin
   try
 
 
       CallMe();
-      readln;
+
+
 
   except
     on E: Exception do

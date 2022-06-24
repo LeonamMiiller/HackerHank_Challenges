@@ -90,6 +90,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="similar-strings\similar_strings.pas"/>
+        <DCCReference Include="exceptional_server\exceptional_server.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

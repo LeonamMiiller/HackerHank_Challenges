@@ -33,14 +33,14 @@ end;
 Function CallMe(): Boolean;
 var value : Integer;
 begin
-  writeln('you called me!!!');
- // value := compute(2,4) ;
 
 
- writeln(compute(1, 1) = 8);
-  writeln(compute(1, 2) = 6);
-  writeln(compute(1, 3) = 2);
-  writeln(compute(2, 4) = 1);
+//  writeln(compute(1, 1) = 8);
+//  writeln(compute(1, 2) = 6);
+//  writeln(compute(1, 3) = 2);
+//  writeln(compute(2, 4) = 1);
+
+
 
 end;
 
@@ -95,27 +95,35 @@ begin
   firstValue := 8;
   secondValue := 4;
   inputedText := 'giggabaj';
-  _start := 2;
-  _end := 4;
+  _start := 1;
+  _end := 3;
 
   // for i := 0 to _start - 1 do
   // begin
 
-  string_check := Copy(inputedText, _start, _end - 1);
+  string_check := Copy(inputedText, _start, _end);
   answer := 0;
 
   firstValue := (Length(inputedText) - _end + _start) - 1;
 
+  if _end = 1 then
+  begin
+    answer := Length(inputedText);
+  end
+  else
   for j := 0 to (Length(inputedText) - _end + _start) - 1 do
   begin
-    secondString := Copy(inputedText, _start - 1 + j, _end - 1);
+    secondString := Copy(inputedText, _start + j, _end);
 
     writeln(Format('string_check : %s, secondString : %s',
       [string_check, secondString]));
 
-    if (fIs_Similar(string_check, secondString)) then
-      answer := answer + 1;
 
+    if (fIs_Similar(string_check, secondString)) then
+    begin
+      writeln(Format('base: %s, subs: %s', [string_check, secondString]));
+      answer := answer + 1;
+    end;
   end;
   // end;
 
@@ -174,7 +182,6 @@ begin
  //  if similars.Count > 0 then
  //  for i := 0 to similars.Count -1 do
  //  Writeln(similars[i]);
-     read;
 
    Result := similars.Count
 end;
