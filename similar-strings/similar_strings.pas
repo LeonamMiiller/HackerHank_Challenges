@@ -5,9 +5,7 @@ interface
 uses
   StrUtils, SysUtils, System.Classes;
 
-Function CallMe(): Boolean;
-Function fIs_Similar(firstString, secondString: String): Boolean;
-procedure pSimilar_Strings();
+Procedure Execute;
 Function fSimilar(firstString: String; subs: String; q: integer): Boolean;
 
 function compute(_start, _end: integer): integer;
@@ -30,104 +28,16 @@ begin
 
 end;
 
-Function CallMe(): Boolean;
-var
-  value: integer;
+Procedure Execute;
 begin
 
-
-  // writeln(compute(1, 1) = 8);
-  // writeln(compute(1, 2) = 6);
-  // writeln(compute(1, 3) = 2);
-  // writeln(compute(2, 4) = 1);
+   writeln(compute(1, 1) = 8);
+   writeln(compute(1, 2) = 6);
+   writeln(compute(1, 3) = 2);
+   writeln(compute(2, 4) = 1);
 
 end;
 
-Function fIs_Similar(firstString, secondString: String): Boolean;
-var
-  firstStringArray, secondStringArray: Array of String;
-  i: integer;
-  value: Boolean;
-begin
-  value := true;
-  SetLength(firstStringArray, Length(firstString));
-  SetLength(secondStringArray, Length(firstString));
-
-  for i := 1 to Length(firstString) do
-  begin
-
-    if MatchStr(firstString[i], firstStringArray) then
-      continue
-    else
-      try
-
-        if MatchStr(secondString[i], firstStringArray) then
-        begin
-          value := False;
-          break
-        end;
-
-      except
-        Read
-      end;
-
-    firstStringArray[i - 1] := secondString[i];
-
-    if not(firstStringArray[i - 1] = secondString[i]) then
-      value := False;
-
-  end;
-
-  result := value;
-
-end;
-
-procedure pSimilar_Strings();
-var
-  answer, _start, _end, i, j, firstValue, secondValue: integer;
-  inputedText: String;
-  string_check: String;
-
-  firstString, secondString: String;
-begin
-
-  firstValue := 8;
-  secondValue := 4;
-  inputedText := 'giggabaj';
-  _start := 1;
-  _end := 3;
-
-  // for i := 0 to _start - 1 do
-  // begin
-
-  string_check := Copy(inputedText, _start, _end);
-  answer := 0;
-
-  firstValue := (Length(inputedText) - _end + _start) - 1;
-
-  if _end = 1 then
-  begin
-    answer := Length(inputedText);
-  end
-  else
-    for j := 0 to (Length(inputedText) - _end + _start) - 1 do
-    begin
-      secondString := Copy(inputedText, _start + j, _end);
-
-      writeln(Format('string_check : %s, secondString : %s',
-        [string_check, secondString]));
-
-      if (fIs_Similar(string_check, secondString)) then
-      begin
-        writeln(Format('base: %s, subs: %s', [string_check, secondString]));
-        answer := answer + 1;
-      end;
-    end;
-  // end;
-
-  writeln(answer);
-  Read;
-end;
 
 Function pCountSimilar(n, q, li, ri: integer; S: String): integer;
 var
@@ -177,9 +87,6 @@ begin
     end;
   end;
 
-  // if similars.Count > 0 then
-  // for i := 0 to similars.Count -1 do
-  // Writeln(similars[i]);
 
   result := similars.Count
 end;
